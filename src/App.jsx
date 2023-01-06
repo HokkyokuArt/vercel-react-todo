@@ -3,7 +3,7 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import { BsTrash, BsBookmarkCheck, BsBookmarkCheckFill } from 'react-icons/bs';
 
-const API = 'http://localhost:5000';
+const API = 'http://localhost:8090';
 
 function App() {
     const [title, setTitle] = useState('');
