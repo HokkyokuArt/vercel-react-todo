@@ -3,7 +3,10 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import { BsTrash, BsBookmarkCheck, BsBookmarkCheckFill } from 'react-icons/bs';
 
-const API = 'http://localhost:8090';
+// const API = 'http://0.0.0.0:8090';
+// const aaa = '/todos'
+const API = 'https://raw.githubusercontent.com/HokkyokuArt/vercel-react-todo/main/data'
+const aaa = '/db.json'
 
 function App() {
     const [title, setTitle] = useState('');
@@ -15,15 +18,18 @@ function App() {
     useEffect(() => {
         const loadData = async () => {
             setLoading(true);
-            const res = await fetch(API + '/todos')
+            const res = await fetch(API + aaa)
                 .then(res => res.json())
                 .then(data => data)
                 .catch(
                     err => console.log(err)
                 );
 
+            console.log(res.todos)
+
             setLoading(false);
-            setTodos(res);
+            // setTodos(res);
+            setTodos(res.todos);
         };
         loadData();
     }, []);
@@ -52,7 +58,7 @@ function App() {
     const handleEdit = async todo => {
         todo.done = !todo.done;
         // Editar tarefa na API
-        const data = await fetch(API + '/todos/' + todo.id, {
+        const data = await fetch(API + aaa + todo.id, {
             method: 'PUT',
             body: JSON.stringify(todo),
             headers: {
@@ -65,7 +71,7 @@ function App() {
 
     const handleDelete = async id => {
         // Excluir tarefa na API
-        await fetch(API + '/todos/' + id, {
+        await fetch(API + aaa + id, {
             method: 'DELETE',
         });
         setTodos(prevState => prevState.filter(todo => todo.id !== id));
