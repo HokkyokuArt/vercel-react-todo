@@ -1,18 +1,6 @@
 {
   "todos": [
     {
-      "id": 0.0382070511547663,
-      "title": "Parar de ser lindo",
-      "time": "Infinitas",
-      "done": false
-    },
-    {
-      "id": 0.6818541761467194,
-      "title": "Comprar pão",
-      "time": "1",
-      "done": true
-    },
-    {
       "id": 0.21296221847105956,
       "title": "Terminar o projeto",
       "time": "4",
